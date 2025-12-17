@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniSearch - Google-like Mini Site</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Roboto', 'Arial', sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #fff;
             color: #333;
-            background-color: #fff;
-            line-height: 1.6;
         }
-        
-        /* Header Styles */
+
+        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -28,7 +29,7 @@
             padding: 20px 30px;
             border-bottom: 1px solid #eaeaea;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: 600;
@@ -37,584 +38,248 @@
             display: flex;
             align-items: center;
         }
-        
+
         .logo i {
             margin-right: 8px;
             color: #ea4335;
         }
-        
+
         .nav-links {
             display: flex;
             gap: 25px;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: #5f6368;
             font-size: 14px;
-            transition: color 0.2s;
         }
-        
-        .nav-links a:hover {
-            color: #1a73e8;
-        }
-        
+
         .user-icon {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background-color: #4285f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #4285f4;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
         }
-        
-        /* Main Search Area */
+
+        /* Search */
         .search-container {
             max-width: 650px;
             margin: 100px auto 40px;
             padding: 0 20px;
+            text-align: center;
         }
-        
+
         .search-box {
             width: 100%;
-            border: 1px solid #dfe1e5;
-            border-radius: 24px;
             padding: 15px 20px;
+            border-radius: 24px;
+            border: 1px solid #dfe1e5;
             font-size: 16px;
-            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.08);
-            transition: box-shadow 0.3s;
             margin-bottom: 30px;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.1);
         }
-        
-        .search-box:focus {
-            outline: none;
-            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.2);
-        }
-        
+
         .search-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
         }
-        
+
         .search-btn {
-            background-color: #f8f9fa;
-            border: 1px solid #f8f9fa;
-            border-radius: 4px;
-            color: #3c4043;
             padding: 10px 20px;
-            font-size: 14px;
+            border: 1px solid #f8f9fa;
+            background: #f8f9fa;
+            border-radius: 4px;
             cursor: pointer;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            font-size: 14px;
         }
-        
-        .search-btn:hover {
-            border: 1px solid #dadce0;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Results Area */
+
+        /* Results */
         .results-container {
             max-width: 700px;
             margin: 0 auto 60px;
             padding: 0 20px;
         }
-        
+
         .results-header {
             font-size: 14px;
             color: #70757a;
             margin-bottom: 25px;
-            padding-bottom: 10px;
             border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
         }
-        
+
         .result-item {
             margin-bottom: 30px;
         }
-        
+
         .result-url {
+            font-size: 14px;
             color: #202124;
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
         }
-        
-        .result-url i {
-            margin-right: 8px;
-            color: #5f6368;
-        }
-        
+
         .result-title {
-            color: #1a0dab;
             font-size: 20px;
+            color: #1a0dab;
             text-decoration: none;
-            margin-bottom: 8px;
             display: block;
-            font-weight: 400;
+            margin: 5px 0;
         }
-        
-        .result-title:hover {
-            text-decoration: underline;
-        }
-        
+
         .result-description {
-            color: #4d5156;
             font-size: 14px;
-            line-height: 1.6;
+            color: #4d5156;
         }
-        
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 50px;
-        }
-        
-        .page-number {
-            color: #4285f4;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-        }
-        
-        .page-number:hover {
-            background-color: #f1f3f4;
-        }
-        
-        .page-number.active {
-            background-color: #4285f4;
-            color: white;
-        }
-        
+
         /* Footer */
         .footer {
-            background-color: #f2f2f2;
+            background: #f2f2f2;
             padding: 20px 30px;
-            color: #70757a;
             font-size: 14px;
+            color: #70757a;
         }
-        
+
         .footer-top {
-            padding-bottom: 20px;
             border-bottom: 1px solid #dadce0;
+            padding-bottom: 15px;
         }
-        
+
         .footer-bottom {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            padding-top: 20px;
+            padding-top: 15px;
         }
-        
+
         .footer-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
         }
-        
+
         .footer-links a {
             color: #70757a;
             text-decoration: none;
         }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .search-container {
-                margin-top: 60px;
-            }
-            
-            .search-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .search-btn {
-                width: 200px;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-        
-        /* Animation for search results */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .result-item {
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        /* Loading indicator */
-        .loading {
-            display: none;
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .loading i {
-            color: #4285f4;
-            font-size: 24px;
-        }
-        
-        .searching .loading {
-            display: block;
-        }
-        
-        .searching .results-container {
-            opacity: 0.6;
-        }
     </style>
 </head>
+
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <a href="#" class="logo">
-            <i class="fas fa-search"></i> MiniSearch
-        </a>
-        
-        <div class="nav-links">
-            <a href="#">About</a>
-            <a href="#">Images</a>
-            <a href="#">News</a>
+
+<header class="header">
+    <a href="#" class="logo"><i class="fas fa-search"></i> MiniSearch</a>
+
+    <div class="nav-links">
+        <a href="#">About</a>
+        <a href="#">Images</a>
+        <a href="#">News</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <div class="user-icon">U</div>
+</header>
+
+<main>
+    <div class="search-container">
+        <h1 style="font-size:48px;color:#4285f4;font-weight:400;">MiniSearch</h1>
+
+        <input type="text" class="search-box" id="searchInput" placeholder="Search the web...">
+
+        <div class="search-buttons">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i> MiniSearch Search
+            </button>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div class="results-header" id="resultsHeader">
+            About 0 results
+        </div>
+
+        <div id="resultsList"></div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-top">
+        <!-- ✅ Country changed -->
+        <p>Nepal</p>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-links">
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
             <a href="#">Settings</a>
         </div>
-        
-        <div class="user-icon">
-            U
+
+        <div class="footer-links">
+            <a href="#">Developers</a>
+            <a href="#">API</a>
+            <a href="#">Contact</a>
         </div>
-    </header>
-    
-    <!-- Main Search Section -->
-    <main>
-        <div class="search-container">
-            <h1 style="text-align: center; font-size: 48px; color: #4285f4; margin-bottom: 30px; font-weight: 400;">MiniSearch</h1>
-            
-            <div class="search-form">
-                <input type="text" class="search-box" id="searchInput" placeholder="Search the web..." autocomplete="off">
-                
-                <div class="search-buttons">
-                    <button class="search-btn" id="searchButton">
-                        <i class="fas fa-search"></i> MiniSearch Search
-                    </button>
-                    <button class="search-btn" id="luckyButton">
-                        <i class="fas fa-feather-alt"></i> I'm Feeling Curious
-                    </button>
+    </div>
+</footer>
+
+<script>
+    const data = [
+        {
+            title: "Introduction to Web Development",
+            url: "https://example.com/web",
+            desc: "Learn HTML, CSS, and JavaScript for building modern websites."
+        },
+        {
+            title: "JavaScript Basics",
+            url: "https://example.com/js",
+            desc: "Understand variables, functions, and DOM manipulation."
+        },
+        {
+            title: "CSS Flexbox Guide",
+            url: "https://example.com/css",
+            desc: "Create responsive layouts easily using Flexbox."
+        }
+    ];
+
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    const resultsList = document.getElementById("resultsList");
+    const resultsHeader = document.getElementById("resultsHeader");
+
+    function search() {
+        const q = searchInput.value.toLowerCase();
+        resultsList.innerHTML = "";
+
+        const results = data.filter(item =>
+            item.title.toLowerCase().includes(q) ||
+            item.desc.toLowerCase().includes(q)
+        );
+
+        resultsHeader.textContent = `About ${results.length} results`;
+
+        results.forEach(r => {
+            resultsList.innerHTML += `
+                <div class="result-item">
+                    <div class="result-url">${r.url}</div>
+                    <a href="#" class="result-title">${r.title}</a>
+                    <div class="result-description">${r.desc}</div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Loading Indicator -->
-        <div class="loading" id="loadingIndicator">
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>Searching...</p>
-        </div>
-        
-        <!-- Results Section -->
-        <div class="results-container" id="resultsContainer">
-            <div class="results-header" id="resultsHeader">
-                About 0 results (0.00 seconds)
-            </div>
-            
-            <div id="resultsList">
-                <!-- Results will be dynamically inserted here -->
-            </div>
-            
-            <!-- Pagination -->
-            <div class="pagination" id="pagination">
-                <!-- Pagination will be dynamically inserted here -->
-            </div>
-        </div>
-    </main>
-    
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-top">
-            <p>United States</p>
-        </div>
-        
-        <div class="footer-bottom">
-            <div class="footer-links">
-                <a href="#">Help</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Settings</a>
-                <a href="#">About MiniSearch</a>
-            </div>
-            
-            <div class="footer-links">
-                <a href="#">Developers</a>
-                <a href="#">API</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Sample search data
-        const searchData = [
-            {
-                id: 1,
-                url: "https://www.example.com/web-development",
-                title: "Introduction to Web Development",
-                description: "Learn the basics of web development including HTML, CSS, and JavaScript. This comprehensive guide covers everything from creating your first web page to deploying a complete web application."
-            },
-            {
-                id: 2,
-                url: "https://www.example.com/javascript-tutorial",
-                title: "JavaScript Tutorial for Beginners",
-                description: "Master JavaScript with this step-by-step tutorial. Learn about variables, functions, DOM manipulation, and modern ES6+ features to build interactive websites."
-            },
-            {
-                id: 3,
-                url: "https://www.example.com/css-flexbox-guide",
-                title: "Complete Guide to CSS Flexbox",
-                description: "Flexbox is a powerful layout model that makes it easy to design flexible and responsive layouts. Learn how to use Flexbox properties with practical examples."
-            },
-            {
-                id: 4,
-                url: "https://www.example.com/search-algorithms",
-                title: "Understanding Search Algorithms",
-                description: "How do search engines work? Learn about the algorithms that power modern search engines and how they rank and retrieve information from vast datasets."
-            },
-            {
-                id: 5,
-                url: "https://www.example.com/responsive-design",
-                title: "Responsive Web Design Principles",
-                description: "Create websites that look great on all devices. Learn about media queries, fluid grids, and responsive images to build mobile-friendly websites."
-            },
-            {
-                id: 6,
-                url: "https://www.example.com/frontend-frameworks",
-                title: "Comparing Frontend Frameworks",
-                description: "An overview of popular frontend frameworks like React, Vue, and Angular. Understand their strengths, weaknesses, and use cases for your next project."
-            },
-            {
-                id: 7,
-                url: "https://www.example.com/api-integration",
-                title: "API Integration Techniques",
-                description: "Learn how to integrate third-party APIs into your web applications. This guide covers REST APIs, authentication methods, and handling API responses."
-            },
-            {
-                id: 8,
-                url: "https://www.example.com/web-performance",
-                title: "Web Performance Optimization",
-                description: "Speed up your website with these performance optimization techniques. Learn about lazy loading, code splitting, caching strategies, and more."
-            }
-        ];
-
-        // DOM elements
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const luckyButton = document.getElementById('luckyButton');
-        const resultsList = document.getElementById('resultsList');
-        const resultsHeader = document.getElementById('resultsHeader');
-        const pagination = document.getElementById('pagination');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        const resultsContainer = document.getElementById('resultsContainer');
-
-        // Search state
-        let currentSearch = '';
-        let currentPage = 1;
-        const resultsPerPage = 5;
-
-        // Initialize with a default search
-        window.addEventListener('DOMContentLoaded', () => {
-            performSearch('web development');
-            searchInput.value = 'web development';
+            `;
         });
+    }
 
-        // Perform search function
-        function performSearch(query) {
-            if (!query.trim()) return;
-            
-            currentSearch = query;
-            currentPage = 1;
-            
-            // Show loading indicator
-            document.body.classList.add('searching');
-            
-            // Simulate network delay
-            setTimeout(() => {
-                const filteredResults = searchData.filter(item => 
-                    item.title.toLowerCase().includes(query.toLowerCase()) ||
-                    item.description.toLowerCase().includes(query.toLowerCase())
-                );
-                
-                displayResults(filteredResults);
-                document.body.classList.remove('searching');
-            }, 600);
-        }
+    searchBtn.addEventListener("click", search);
+    searchInput.addEventListener("keyup", e => {
+        if (e.key === "Enter") search();
+    });
+</script>
 
-        // Display search results
-        function displayResults(results) {
-            resultsList.innerHTML = '';
-            
-            // Calculate pagination
-            const totalPages = Math.ceil(results.length / resultsPerPage);
-            const startIndex = (currentPage - 1) * resultsPerPage;
-            const endIndex = Math.min(startIndex + resultsPerPage, results.length);
-            const pageResults = results.slice(startIndex, endIndex);
-            
-            // Update results header
-            const resultCount = results.length;
-            resultsHeader.textContent = `About ${resultCount} result${resultCount !== 1 ? 's' : ''} (0.${Math.floor(Math.random() * 90 + 10)} seconds)`;
-            
-            // Display results for current page
-            if (pageResults.length === 0) {
-                resultsList.innerHTML = `
-                    <div class="result-item">
-                        <h3 style="color: #70757a; font-weight: 400;">No results found for "${currentSearch}"</h3>
-                        <p style="margin-top: 10px;">Try different keywords or check your spelling</p>
-                    </div>
-                `;
-            } else {
-                pageResults.forEach(result => {
-                    const resultElement = document.createElement('div');
-                    resultElement.className = 'result-item';
-                    resultElement.innerHTML = `
-                        <div class="result-url">
-                            <i class="fas fa-globe"></i> ${result.url}
-                        </div>
-                        <a href="#" class="result-title">${result.title}</a>
-                        <div class="result-description">
-                            ${highlightSearchTerms(result.description, currentSearch)}
-                        </div>
-                    `;
-                    resultsList.appendChild(resultElement);
-                });
-            }
-            
-            // Display pagination
-            displayPagination(totalPages);
-            
-            // Scroll to results
-            resultsContainer.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Highlight search terms in result descriptions
-        function highlightSearchTerms(text, searchQuery) {
-            if (!searchQuery.trim()) return text;
-            
-            const terms = searchQuery.toLowerCase().split(' ');
-            let highlightedText = text;
-            
-            terms.forEach(term => {
-                if (term.length > 2) {
-                    const regex = new RegExp(`(${term})`, 'gi');
-                    highlightedText = highlightedText.replace(regex, '<mark>$1</mark>');
-                }
-            });
-            
-            return highlightedText;
-        }
-
-        // Display pagination controls
-        function displayPagination(totalPages) {
-            pagination.innerHTML = '';
-            
-            if (totalPages <= 1) return;
-            
-            // Previous button
-            if (currentPage > 1) {
-                const prevButton = document.createElement('a');
-                prevButton.href = '#';
-                prevButton.className = 'page-number';
-                prevButton.innerHTML = '<i class="fas fa-chevron-left"></i> Previous';
-                prevButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage--;
-                    performSearch(currentSearch);
-                });
-                pagination.appendChild(prevButton);
-            }
-            
-            // Page numbers
-            const maxVisiblePages = 5;
-            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-            
-            // Adjust if we're near the end
-            if (endPage - startPage + 1 < maxVisiblePages) {
-                startPage = Math.max(1, endPage - maxVisiblePages + 1);
-            }
-            
-            for (let i = startPage; i <= endPage; i++) {
-                const pageButton = document.createElement('a');
-                pageButton.href = '#';
-                pageButton.className = `page-number ${i === currentPage ? 'active' : ''}`;
-                pageButton.textContent = i;
-                pageButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage = i;
-                    performSearch(currentSearch);
-                });
-                pagination.appendChild(pageButton);
-            }
-            
-            // Next button
-            if (currentPage < totalPages) {
-                const nextButton = document.createElement('a');
-                nextButton.href = '#';
-                nextButton.className = 'page-number';
-                nextButton.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
-                nextButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage++;
-                    performSearch(currentSearch);
-                });
-                pagination.appendChild(nextButton);
-            }
-        }
-
-        // Event listeners
-        searchButton.addEventListener('click', () => {
-            performSearch(searchInput.value);
-        });
-
-        searchInput.addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') {
-                performSearch(searchInput.value);
-            }
-        });
-
-        luckyButton.addEventListener('click', () => {
-            const randomQueries = [
-                'What is the future of artificial intelligence?',
-                'How do search engines index websites?',
-                'Latest web development trends',
-                'Machine learning for beginners',
-                'History of the internet'
-            ];
-            
-            const randomQuery = randomQueries[Math.floor(Math.random() * randomQueries.length)];
-            searchInput.value = randomQuery;
-            performSearch(randomQuery);
-        });
-
-        // Focus search input on page load
-        searchInput.focus();
-    </script>
 </body>
 </html>
