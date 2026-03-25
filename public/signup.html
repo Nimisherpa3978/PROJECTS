@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - Hotel Tibet International</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="Images/hotellogo.png" alt="Hotel Tibet International Logo" style="height: 50px; width: auto;">
+        <h2 style="margin: 0;">Hotel Tibet International</h2>
+      </div>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="index.html#rooms">Rooms</a>
+        <a href="index.html#amenities">Amenities</a>
+        <a href="booking.html">Book Now</a>
+        <a href="login.html">Login</a>
+      </div>
+    </nav>
+
+    <section
+      style="
+        background: linear-gradient(135deg, #8b4513 0%, #d2691e 50%, #daa520 100%);
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      "
+    >
+      <div
+        style="max-width: 400px; background: rgba(255,255,255,0.95); border-radius: 15px; border: 3px solid #daa520; box-shadow: 0 8px 25px rgba(0,0,0,0.3);"
+        onsubmit="signup(event)"
+      >
+        <div style="background: linear-gradient(135deg, #d2691e 0%, #b8860b 100%); padding: 20px; border-radius: 12px 12px 0 0; text-align: center;">
+          <h2 style="color: #daa520; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Create Account</h2>
+          <p style="color: #f5f5dc; margin: 10px 0 0 0; font-size: 14px;">Join us and enjoy exclusive member benefits</p>
+        </div>
+
+        <div class="form-group">
+          <label for="fullname">Full Name *</label>
+          <input
+            type="text"
+            id="fullname"
+            placeholder="Your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="user">Username *</label>
+          <input
+            type="text"
+            id="user"
+            placeholder="Choose a username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pass">Password *</label>
+          <input
+            type="password"
+            id="pass"
+            placeholder="At least 8 characters"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirm">Confirm Password *</label>
+          <input
+            type="password"
+            id="confirm"
+            placeholder="Confirm your password"
+            required
+          />
+        </div>
+
+        <button type="submit">Create Account</button>
+
+        <p style="text-align: center; margin-top: 20px; color: #666">
+          Already have an account?
+          <a
+            href="login.html"
+            style="color: #d2691e; font-weight: bold; text-decoration: none"
+            >Login here</a
+          >
+        </p>
+
+        <div id="msg" class="msg"></div>
+      </form>
+    </section>
+
+    <footer>
+      <h3>Hotel Tibet International</h3>
+      <p>Boudha Stupa Road, Kathmandu, Nepal</p>
+      <p>📞 +977-1-4490123 | 📧 info@hoteltibet.com</p>
+      <p>&copy; 2024 Hotel Tibet International. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

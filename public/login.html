@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Login - Hotel Tibet International</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="Images/hotellogo.png" alt="Hotel Tibet International Logo" style="height: 50px; width: auto;">
+        <h2 style="margin: 0;">Hotel Tibet International</h2>
+      </div>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="index.html#rooms">Rooms</a>
+        <a href="index.html#amenities">Amenities</a>
+        <a href="booking.html">Book Now</a>
+        <a href="login.html">Login</a>
+      </div>
+    </nav>
+
+    <section
+      style="
+        background: linear-gradient(135deg, rgba(139,69,19,0.45) 0%, rgba(210,105,30,0.35) 50%, rgba(218,165,32,0.35) 100%), url('Images/BG2.1.png') center/cover no-repeat;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      "
+    >
+      <div style="max-width: 400px; background: rgba(255,255,255,0.78); backdrop-filter: blur(8px); border-radius: 15px; border: 3px solid #daa520; box-shadow: 0 8px 25px rgba(0,0,0,0.3);" onsubmit="login(event)">
+        <div style="background: linear-gradient(135deg, #d2691e 0%, #b8860b 100%); padding: 20px; border-radius: 12px 12px 0 0; text-align: center;">
+          <h2 style="color: #daa520; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Member Login</h2>
+          <p style="color: #f5f5dc; margin: 10px 0 0 0; font-size: 14px;">Access your account and manage bookings</p>
+        </div>
+
+        <div class="form-group">
+          <label for="user">Email or Username *</label>
+          <input
+            type="text"
+            id="user"
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="pass">Password *</label>
+          <input
+            type="password"
+            id="pass"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p style="text-align: center; margin-top: 20px; color: #666">
+          Don't have an account?
+          <a
+            href="signup.html"
+            style="color: #d2691e; font-weight: bold; text-decoration: none"
+            >Sign up here</a
+          >
+        </p>
+
+        <div id="msg" class="msg"></div>
+      </form>
+    </section>
+
+    <footer>
+      <h3>Hotel Tibet International</h3>
+      <p>Boudha Stupa Road, Kathmandu, Nepal</p>
+      <p>📞 +977-1-4490123 | 📧 info@hoteltibet.com</p>
+      <p>&copy; 2024 Hotel Tibet International. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

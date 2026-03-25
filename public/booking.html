@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Your Room - Hotel Tibet International</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div style="display: flex; align-items: center; gap: 15px">
+        <img
+          src="Images/hotellogo.png"
+          alt="Hotel Tibet International Logo"
+          style="height: 50px; width: auto"
+        />
+        <h2 style="margin: 0">Hotel Tibet International</h2>
+      </div>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="index.html#rooms">Rooms</a>
+        <a href="index.html#amenities">Amenities</a>
+        <a href="booking.html">Book Now</a>
+        <a href="login.html">Login</a>
+      </div>
+    </nav>
+
+    <section
+      style="
+        background:
+          linear-gradient(
+            135deg,
+            rgba(139, 69, 19, 0.45) 0%,
+            rgba(210, 105, 30, 0.35) 50%,
+            rgba(218, 165, 32, 0.35) 100%
+          ),
+          url(&quot;Images/BG2.1.png&quot;) center/cover no-repeat;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 40px;
+      "
+    >
+      <form class="glass-form" onsubmit="book(event)">
+        <div
+          style="
+            background: linear-gradient(135deg, #d2691e 0%, #b8860b 100%);
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            margin: -40px -40px 30px -40px;
+          "
+        >
+          <h2
+            style="
+              color: #daa520;
+              margin: 0;
+              text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            "
+          >
+            Reserve Your Room
+          </h2>
+          <p style="color: #f5f5dc; margin: 10px 0 0 0; font-size: 14px">
+            Book your authentic Tibetan experience
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your.email@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+977-1-xxxxxxxx" required />
+        </div>
+
+        <div class="form-group">
+          <label for="room">Room Type *</label>
+          <select id="room" required>
+            <option value="">-- Select a room --</option>
+            <option value="TBR - $120">
+              Tibetan Room Basic (TBR) - $120/night
+            </option>
+            <option value="TBS - $190">
+              Tibetan Room Standard (TBS) - $190/night
+            </option>
+            <option value="TES - $215">
+              Tibetan Executive Suite (TES) - $215/night
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="checkin">Check-in Date *</label>
+          <input type="date" id="checkin" required />
+        </div>
+
+        <div class="form-group">
+          <label for="checkout">Check-out Date *</label>
+          <input type="date" id="checkout" required />
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Number of Guests *</label>
+          <select id="guests" required>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5+">5+ Guests</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Special Requests</label>
+          <textarea
+            id="notes"
+            placeholder="Any special requirements or requests"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <button type="submit">Reserve Room</button>
+        <button
+          type="button"
+          onclick="window.location.href = 'index.html'"
+          style="background: #6c757d; margin-top: 10px"
+        >
+          Cancel
+        </button>
+
+        <div id="msg" class="msg"></div>
+      </form>
+    </section>
+
+    <footer>
+      <h3>Hotel Tibet International</h3>
+      <p>Boudha Stupa Road, Kathmandu, Nepal</p>
+      <p>📞 +977-1-4490123 | 📧 info@hoteltibet.com</p>
+      <p>&copy; 2024 Hotel Tibet International. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
